@@ -69,16 +69,11 @@ Sphere.prototype = {
     var a = r1.direction.dot(r1.direction);
     //var aNormalized = ray.direction.normalize();
     // b = 2 * ray direction . (ray origin - sphere center)
-
     var n1 = r1.direction.multiplyScalar(2)
     var b = n1.dot(r1.origin.subtract(this.center));
-    //var b = 2 * (r1.direction.dot(r1.origin - this.center));
     // c = (ray origin - sphere center) . (ray origin - sphere center) - sphere^2 radius
     var n2 = r1.origin.subtract(this.center);
-    var n3 = n2.dot(n2);
-    var n4 = (this.radius * this.radius);
-    var c = n3 - n4;
-    //var c = (r1.origin.subtract(this.center)).dot(r1.origin.subtract(this.center)).subtract(this.radius*this.radius);
+    var c = n2.dot(n2) - this.radius**2;
     // 3. calculate the discriminant
 
 
