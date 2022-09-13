@@ -31,34 +31,12 @@ var Sphere = function(center, radius) {
 
   // Check center for type of vector3
   if (!(this.center instanceof Vector3)){
-    //console.error("Center is not of type vector. Setting default values to (0,0,0).")
-    //this.center.x= 0; this.center.y = 0; this.center.z = 0;
-    //this.center = (0,0,0);
     this.center = new Vector3(0,0,0);
   }
-
-  /*// Check x coordinate of origin of sphere to see if number is undefined
-  if (center.x == undefined || !Number.isFinite(center.x)){
-    this.center.x = 0;
-  }
-  // Check y coordinate of origin of sphere to see if number is undefined
-  if (center.y == undefined || !Number.isFinite(center.y)){
-    this.center.y = 0;
-  }
-  // check z coordinate of origin of sphere to see if number is undefined
-  if (center.z == undefined || !Number.isFinite(center.z)){
-    this.center.z = 0;
-  }*/
-  // check if radius of sphere is a number
-  /*if (!Number.isFinite(this.radius)){
-    this.radius = 1;
-  }*/
 
   if ((typeof(this.radius) != 'number')) {
     this.radius = 1;
   }
-
- 
 
   // Sanity checks (your modification should be above this)
   if (!(this.center instanceof Vector3)) {
@@ -86,9 +64,27 @@ Sphere.prototype = {
     // 1. review slides/book math
     
     // 2. identity the vectors needed to solve for the coefficients in the quadratic equation
+//-----------------------------------------------------------------------------------------------------//
+    // a = (ray direction . ray direction) or 1 if ray direction is normalized
+    var a = r1.direction.dot(r1.direction);
+    //var aNormalized = ray.direction.normalize();
+    // b = 2 * ray direction . (ray origin - sphere center)
 
+    var n1 = r1.direction.multiplyScalar(2)
+    var b = n1.dot(r1.origin.subtract(this.center));
+    //var b = 2 * (r1.direction.dot(r1.origin - this.center));
+    // c = (ray origin - sphere center) . (ray origin - sphere center) - sphere^2 radius
+    var n2 = r1.origin.subtract(this.center);
+    var n3 = n2.dot(n2);
+    var n4 = (this.radius * this.radius);
+    var c = n3 - n4;
+    //var c = (r1.origin.subtract(this.center)).dot(r1.origin.subtract(this.center)).subtract(this.radius*this.radius);
     // 3. calculate the discriminant
-    
+
+
+    // Quadratic Eq = -b +- sqrt(b^2 - 4ac) / 2a
+    // will yield discriminant which could be 0, 1, 2 values depending on number of intersections.
+//-----------------------------------------------------------------------------------------------------// 
     // 4. use the discriminant to determine if further computation is necessary 
     //    if (discriminant...) { ... } else { ... }
 
