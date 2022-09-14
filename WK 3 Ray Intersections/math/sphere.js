@@ -75,10 +75,12 @@ Sphere.prototype = {
     var n2 = r1.origin.subtract(this.center);
     var c = n2.dot(n2) - this.radius**2;
     // 3. calculate the discriminant
-
-
     // Quadratic Eq = -b +- sqrt(b^2 - 4ac) / 2a
     // will yield discriminant which could be 0, 1, 2 values depending on number of intersections.
+    var quadraticPos = -b + Math.sqrt(b*b - 4*a*c) / 2*a;
+    var quadraticNeg = -b - Math.sqrt(b*b - 4*a*c) / 2*a;
+
+    var discriminant = Math.sqrt(b*b - 4*a*c);
 //-----------------------------------------------------------------------------------------------------// 
     // 4. use the discriminant to determine if further computation is necessary 
     //    if (discriminant...) { ... } else { ... }
