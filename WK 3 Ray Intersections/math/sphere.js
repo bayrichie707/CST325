@@ -84,7 +84,7 @@ Sphere.prototype = {
 //-----------------------------------------------------------------------------------------------------// 
     // 4. use the discriminant to determine if further computation is necessary 
     //    if (discriminant...) { ... } else { ... }
-
+    
     // 5. return the following object literal "result" based on whether the intersection
     //    is valid (i.e. the intersection is in front of the ray AND the ray is not inside
     //    the sphere)
