@@ -160,7 +160,7 @@ Matrix4.prototype = {
   // -------------------------------------------------------------------------
   makeScale: function(x, y, z) {
     // laid out for clarity, not performance
-    this.makeIdentity();
+    //this.makeIdentity();
     this.elements[0] = x;
     this.elements[5] = y;
     this.elements[10] = z;
@@ -255,7 +255,7 @@ Matrix4.prototype = {
   // -------------------------------------------------------------------------
   makeTranslation: function(arg1, arg2, arg3) {
     // laid out for clarity, not performance
-    this.makeIdentity();
+    //this.makeIdentity();
 
     if (arg1 instanceof Vector4) {
       this.elements[3] = arg1.x;
