@@ -234,10 +234,13 @@
 
 			var linePositions = [];
 
+			
 			// specify the horizontal lines
 			for (var i = -10; i <= 10; ++i) {
 				// add position for line start point (x value should be i)
+				linePositions[i] = i;
 				// add position for line end point (x value should be i)
+				linePositions[i] = i;
 			}
 
 			// specify the lateral lines
@@ -276,9 +279,10 @@
 			// this is a new frame so let's clear out whatever happened last frame
 			gl.clearColor(0.707, 0.707, 1, 1.0);
 			gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-
+			
 			renderTriangle(time.secondsElapsedSinceStart++);
-			// renderLines();
+			//console.log("seconds Elapsed: " + time.secondsElapsedSinceStart);
+			renderLines();
 		}
 
 		// -------------------------------------------------------------------------
@@ -286,21 +290,16 @@
 			// calculate the number of degrees we should have rotated given how much time has elapsed
 			// 60 degrees per second
 			var degrees = secondsElapsedSinceStart * 60;
-			//time.secondsElapsedSinceStart++;
-			//degrees++; 
-			console.log("seconds Elapsed: " + time.secondsElapsedSinceStart);
+ 
+			
 
 			// todo #11 - make the triangle rotate
-			triangleGeometry.worldMatrix.makeRotationX(degrees);
+			triangleGeometry.worldMatrix.makeRotationY(degrees);
 
 			// todo #6
 			// 1. update the triangle geometry world matrix here (used to place the triangle into world space)
-			/*triangleGeometry.worldMatrix.set(1, 0, 0, 0,
-											 0, 1, 0, 0,
-											 0, 0, -1, 0,
-											 0, 0, 0, 1)*/
 			triangleGeometry.worldMatrix.makeIdentity();
-			triangleGeometry.worldMatrix.makeRotationX(degrees);
+			
 			triangleGeometry.worldMatrix.makeTranslation(0, 0, -7);
 			// 2. reset view matrix to identity
 			viewMatrix.makeIdentity();
