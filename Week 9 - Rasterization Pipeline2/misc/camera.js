@@ -14,11 +14,7 @@ function Camera(input) {
     this.getForward = function() {
         // todo #6 - pull out the forward direction from the world matrix and return as a vector
         //         - recall that the camera looks in the "backwards" direction
-        z1 = this.getViewMatrix.getElement(0, 2);
-        z2 = this.getViewMatrix.getElement(1, 2);
-        z3 = this.getViewMatrix.getElement(2, 2);
-        
-        return new Vector3(z1, z2, z3);
+        return new Vector3();
     }
     // -------------------------------------------------------------------------
     this.update = function(dt) {
@@ -26,7 +22,6 @@ function Camera(input) {
 
         if (input.up) {
             // todo #7 - move the camera position a little bit in its forward direction
-            cameraPosition.getForward()++;
         }
 
         if (input.down) {
@@ -42,7 +37,7 @@ function Camera(input) {
         }
 
         // todo #7 - create the cameraWorldMatrix from scratch based on this.cameraPosition
-        this.cameraWorldMatrix = this.cameraPosition;
+
         // todo #8 - create a rotation matrix based on cameraYaw and apply it to the cameraWorldMatrix
         // (order matters!)
     }
