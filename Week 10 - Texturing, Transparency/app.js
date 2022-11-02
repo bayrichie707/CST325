@@ -159,8 +159,19 @@ function updateAndRender() {
     //   2. set blend mode source to gl.SRC_ALPHA and destination to gl.ONE_MINUS_SRC_ALPHA
     gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
 
-    // todo #10 apply the painter's algorithm
-
+    // // todo #10 apply the painter's algorithm
+    // sphereGeometryList.sort(function(a, b) {
+    //     var cameraPos;
+    //     var spherePos;
+    // });
+    //var sortedGeometryList = [];
+    // get distance from camera to one sphere
+    // for (var i = 0; i < sphereGeometryList.length; ++i) {
+    //     var currentDistance = sphereGeometryList[i].getPosition().subtract(camera.getPosition());
+    //     if (currentDistance.length() > sphereGeometryList[i + 1].length()){
+    //         sortedGeometryList = sphereGeometryList[i];
+    //     }
+    // }
     // todo #6
     // uncomment when directed by guide
     for (var i = 0; i < sphereGeometryList.length; ++i) {

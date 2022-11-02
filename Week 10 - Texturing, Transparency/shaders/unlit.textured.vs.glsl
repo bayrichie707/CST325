@@ -13,11 +13,13 @@ uniform mat4 uProjectionMatrix;
 
 varying vec2 vTexcoords;
 
+
 void main(void) {
     gl_Position = uProjectionMatrix * uViewMatrix * uWorldMatrix * vec4(aVertexPosition, 1.0);
 
     // set texture to fragment shader to be interpolated
     vTexcoords = aTexcoords;
+
 }
 
 // EOF 00100001-10
