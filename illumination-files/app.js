@@ -132,8 +132,6 @@ function updateAndRender() {
     var aspectRatio = gl.canvasWidth / gl.canvasHeight;
 
     // todo #10
-    // add keyboard controls for changing light direction here
-
     time.update();
     camera.update(time.deltaTime);
 
