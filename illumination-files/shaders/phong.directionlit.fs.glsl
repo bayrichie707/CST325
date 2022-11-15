@@ -25,11 +25,14 @@ void main(void) {
     vec3 reflectionVector = reflect(-eyeVector, normalizedWorld);
 
     // todo #6 calculate the phong term
-    //float phongTerm = normalize(eyeVector + normalizedLightDir + normalizedWorld);
+    float phongTerm = pow(max(dot(eyeVector, reflectionVector), 0.0), 64.0);
+   
     // combine
     // todo #7 apply light and material interaction for diffuse value by using the texture color as the material
+    //float diffuse = textureColor * lambert + lightColor
+    vec3 diffuseColor = lambert * texture2D(uTexture, vTexcoords).rgb;
     // todo #8 apply light and material interaction for phong, assume phong material color is (0.3, 0.3, 0.3)
-
+    vec3 specularColor = lambert * vec3(0.3,0.3,0.3);
 
     vec3 albedo = texture2D(uTexture, vTexcoords).rgb;
 
@@ -39,11 +42,13 @@ void main(void) {
 
     // todo #9
     // add "diffuseColor" and "specularColor" when ready
-    vec3 finalColor = ambient; // + diffuseColor + specularColor;
+    vec3 finalColor = ambient + specularColor + diffuseColor; // + diffuseColor + specularColor;
 
     //gl_FragColor = vec4(finalColor, 1.0);
     //gl_FragColor = vec4(normalizedWorld, 1.0);
-    gl_FragColor = vec4(reflectionVector, 1.0);
+    //gl_FragColor = vec4(phongTerm, phongTerm, phongTerm, 1.0);
+    //gl_FragColor = vec4(specularColor, 1.0);
+    gl_FragColor = vec4(finalColor, 1.0);
 }
 
 // EOF 00100001-10
