@@ -18,7 +18,10 @@ void main(void) {
   float lambert = max(dot(worldNormal01, uDirectionToLight), 0.0);
   float specularIntensity = pow(max(dot(reflection01, directionToEye01), 0.0), 64.0);
 
-  vec4 texColor = texture2D(uAlbedoTexture, vTexCoords);
+  //vec4 texColor = texture2D(uAlbedoTexture, vTexCoords);
+
+  vec4 texColor = texture2D(uShadowTexture, vTexCoords);
+ 
 
   // todo #4 sample a color from the shadow texture using vTexCoords and visualize the result
 

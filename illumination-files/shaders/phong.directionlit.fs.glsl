@@ -29,7 +29,6 @@ void main(void) {
    
     // combine
     // todo #7 apply light and material interaction for diffuse value by using the texture color as the material
-    //float diffuse = textureColor * lambert + lightColor
     vec3 diffuseColor = lambert * texture2D(uTexture, vTexcoords).rgb;
     // todo #8 apply light and material interaction for phong, assume phong material color is (0.3, 0.3, 0.3)
     vec3 specularColor = lambert * vec3(0.3,0.3,0.3);
