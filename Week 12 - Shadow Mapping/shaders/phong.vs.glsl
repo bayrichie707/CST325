@@ -17,6 +17,7 @@ void main(void) {
   vTexCoords = aTexCoords;
   vWorldNormal = (uWorldMatrix * vec4(aNormal, 0.0)).xyz;
   vWorldPosition = (uWorldMatrix * vec4(aVertexPosition, 1.0)).xyz;
+
 }
 
 // EOF 00100001-10
